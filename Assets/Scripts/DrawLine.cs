@@ -5,30 +5,36 @@ using UnityEngine;
 public class DrawLine : MonoBehaviour {
     private LineRenderer lineRenderer;
 
-    public float Stroke;
-    public float LineHeight;
     public Transform origin;
     public Transform checkpoint;
     public Transform destination;
+    private List<Transform> listTransform;
 
     // Use this for initialization
     void Start () {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.startWidth = Stroke;
-        lineRenderer.endWidth = Stroke;
-
+        lineRenderer.startWidth = .45f;
+        lineRenderer.endWidth = 0.45f;
+        //last in first out
+        listTransform = new List<Transform>(new Transform[] {  destination, checkpoint,  origin });
     }
 	
 	// Update is called once per frame
 	void Update () {
-        lineRenderer.SetPosition(0, getAdjustedVector(origin.position));
-        lineRenderer.SetPosition(1, getAdjustedVector(checkpoint.position));
-        lineRenderer.SetPosition(2, getAdjustedVector(destination.position));
-    }
 
-    Vector3 getAdjustedVector(Vector3 v) {
-        var newPos = v;
-        newPos.y = LineHeight;
-        return newPos;
+
+        for(int i = 0; i < listTransform.Count;i++)
+        {
+            lineRenderer.SetPosition(i, listTransform[i].position);
+        }
+        if (listTransform[listTransform.Count-1].position == listTransform[listTransform.Count - 2].position && listTransform.Count >=2)
+        {
+            listTransform[listTransform.Count - 2] = listTransform[listTransform.Count - 1];
+            listTransform.RemoveAt(listTransform.Count - 1);
+            lineRenderer.SetVertexCount(lineRenderer.positionCount - 1);
+        }
+
+
+
     }
 }
