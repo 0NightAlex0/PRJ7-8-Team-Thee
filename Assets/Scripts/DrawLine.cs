@@ -31,6 +31,7 @@ public class DrawLine : MonoBehaviour {
         {
             listTransform[listTransform.Count - 2] = listTransform[listTransform.Count - 1];
             listTransform.RemoveAt(listTransform.Count - 1);
+            //last in first out
             lineRenderer.SetVertexCount(lineRenderer.positionCount - 1);
         }
 
