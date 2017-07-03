@@ -45,11 +45,11 @@ public class DrawLine : MonoBehaviour {
     //check if 2 vectors are in a certain range
     bool InRange(Vector3 v1, Vector3 v2, float range, bool evalY) {
         var inX = v1.x <= v2.x + range && v1.x >= v2.x - range;
-        Debug.Log(string.Format("[X] point: {0} | lower bound: {1} | upper bound: {2} | in bounds: {3}", v1.x, v2.x - range, v2.x + range, inX));
+        //Debug.Log(string.Format("[X] point: {0} | lower bound: {1} | upper bound: {2} | in bounds: {3}", v1.x, v2.x - range, v2.x + range, inX));
         var inY = v1.y <= v2.y + range && v1.y >= v2.y - range;
-        Debug.Log(string.Format("[Y] point: {0} | lower bound: {1} | upper bound: {2} | in bounds: {3}", v1.y, v2.y - range, v2.y + range, inY));
+        //Debug.Log(string.Format("[Y] point: {0} | lower bound: {1} | upper bound: {2} | in bounds: {3}", v1.y, v2.y - range, v2.y + range, inY));
         var inZ = v1.z <= v2.z + range && v1.z >= v2.z - range;
-        Debug.Log(string.Format("[Z] point: {0} | lower bound: {1} | upper bound: {2} | in bounds: {3}", v1.z, v2.z - range, v2.z + range, inZ));
+        //Debug.Log(string.Format("[Z] point: {0} | lower bound: {1} | upper bound: {2} | in bounds: {3}", v1.z, v2.z - range, v2.z + range, inZ));
         return inX && (inY || !evalY) && inZ;
     }
 }
