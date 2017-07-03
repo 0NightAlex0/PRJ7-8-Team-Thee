@@ -26,12 +26,13 @@ public class DrawLine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
+        //set all the input objects in a position
         for(int i = 0; i < listTransform.Count;i++) {
             var newPos = listTransform[i].position;
             newPos.y = LineHeight;
             lineRenderer.SetPosition(i, newPos);
         }
+        //if camera is in a certain range of a object, then the current route should be destroyed
         if (InRange(listTransform[listTransform.Count - 1].position, listTransform[listTransform.Count - 2].position, CollisionRange, CollideOnY)  && listTransform.Count >=2)
         {
             Debug.Log("Removing Checkpoint");
@@ -41,7 +42,7 @@ public class DrawLine : MonoBehaviour {
             lineRenderer.SetVertexCount(lineRenderer.positionCount - 1);
         }
     }
-
+    //check if 2 vectors are in a certain range
     bool InRange(Vector3 v1, Vector3 v2, float range, bool evalY) {
         var inX = v1.x <= v2.x + range && v1.x >= v2.x - range;
         Debug.Log(string.Format("[X] point: {0} | lower bound: {1} | upper bound: {2} | in bounds: {3}", v1.x, v2.x - range, v2.x + range, inX));
