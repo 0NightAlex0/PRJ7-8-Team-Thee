@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/holotest.unity
+    path: Assets/Scenes/holotest.unity
     guid: 5a87edceb5e94ed4cbd63b04c070e0b8
