@@ -32,10 +32,9 @@ public class DrawLine : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-        for(var i = 0; i < listTransform.Count;i++) {
-            var newPos = listTransform[i].position;
+        //set all the input objects in a position
+		for(var i = 0; i < listTransform.Count;i++) {        
+			var newPos = listTransform[i].position;
             newPos.y = LineHeight;
             lineRenderer.SetPosition(i, newPos);
         }
